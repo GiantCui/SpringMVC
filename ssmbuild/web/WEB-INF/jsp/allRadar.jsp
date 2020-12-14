@@ -70,7 +70,7 @@
 
     <div class="row container-fluid">
         <div class="col-xl-1">
-            <label style="float: right">欢迎您，${username}</label>
+            <label style="float: right">欢迎您，<%=session.getAttribute("username")%></label>
         </div>
         <div class="col-xl-11 column">
             <div class="page-header">
