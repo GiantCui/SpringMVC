@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.RadarDao">
+  <resultMap id="BaseResultMap" type="generate.Radar">
+    <id column="radarID" jdbcType="VARCHAR" property="radarid" />
+    <result column="radarIP" jdbcType="VARCHAR" property="radarip" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+    <result column="sirialNum" jdbcType="VARCHAR" property="sirialnum" />
+    <result column="workState" jdbcType="BOOLEAN" property="workstate" />
+    <result column="foreignMatter" jdbcType="BOOLEAN" property="foreignmatter" />
+    <result column="safetyDoor" jdbcType="BOOLEAN" property="safetydoor" />
+    <result column="radarError" jdbcType="BOOLEAN" property="radarerror" />
+    <result column="lastlog" jdbcType="VARCHAR" property="lastlog" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    radarID, radarIP, port, sirialNum, workState, foreignMatter, safetyDoor, radarError, 
+    lastlog, `comment`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from radar
+    where radarID = #{radarid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from radar
+    where radarID = #{radarid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="radarID" keyProperty="radarid" parameterType="generate.Radar" useGeneratedKeys="true">
+    insert into radar (radarIP, port, sirialNum, 
+      workState, foreignMatter, safetyDoor, 
+      radarError, lastlog, `comment`
+      )
+    values (#{radarip,jdbcType=VARCHAR}, #{port,jdbcType=VARCHAR}, #{sirialnum,jdbcType=VARCHAR}, 
+      #{workstate,jdbcType=BOOLEAN}, #{foreignmatter,jdbcType=BOOLEAN}, #{safetydoor,jdbcType=BOOLEAN}, 
+      #{radarerror,jdbcType=BOOLEAN}, #{lastlog,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="radarID" keyProperty="radarid" parameterType="generate.Radar" useGeneratedKeys="true">
+    insert into radar
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="radarip != null">
+        radarIP,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="sirialnum != null">
+        sirialNum,
+      </if>
+      <if test="workstate != null">
+        workState,
+      </if>
+      <if test="foreignmatter != null">
+        foreignMatter,
+      </if>
+      <if test="safetydoor != null">
+        safetyDoor,
+      </if>
+      <if test="radarerror != null">
+        radarError,
+      </if>
+      <if test="lastlog != null">
+        lastlog,
+      </if>
+      <if test="comment != null">
+        `comment`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="radarip != null">
+        #{radarip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="sirialnum != null">
+        #{sirialnum,jdbcType=VARCHAR},
+      </if>
+      <if test="workstate != null">
+        #{workstate,jdbcType=BOOLEAN},
+      </if>
+      <if test="foreignmatter != null">
+        #{foreignmatter,jdbcType=BOOLEAN},
+      </if>
+      <if test="safetydoor != null">
+        #{safetydoor,jdbcType=BOOLEAN},
+      </if>
+      <if test="radarerror != null">
+        #{radarerror,jdbcType=BOOLEAN},
+      </if>
+      <if test="lastlog != null">
+        #{lastlog,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.Radar">
+    update radar
+    <set>
+      <if test="radarip != null">
+        radarIP = #{radarip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="sirialnum != null">
+        sirialNum = #{sirialnum,jdbcType=VARCHAR},
+      </if>
+      <if test="workstate != null">
+        workState = #{workstate,jdbcType=BOOLEAN},
+      </if>
+      <if test="foreignmatter != null">
+        foreignMatter = #{foreignmatter,jdbcType=BOOLEAN},
+      </if>
+      <if test="safetydoor != null">
+        safetyDoor = #{safetydoor,jdbcType=BOOLEAN},
+      </if>
+      <if test="radarerror != null">
+        radarError = #{radarerror,jdbcType=BOOLEAN},
+      </if>
+      <if test="lastlog != null">
+        lastlog = #{lastlog,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        `comment` = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where radarID = #{radarid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.Radar">
+    update radar
+    set radarIP = #{radarip,jdbcType=VARCHAR},
+      port = #{port,jdbcType=VARCHAR},
+      sirialNum = #{sirialnum,jdbcType=VARCHAR},
+      workState = #{workstate,jdbcType=BOOLEAN},
+      foreignMatter = #{foreignmatter,jdbcType=BOOLEAN},
+      safetyDoor = #{safetydoor,jdbcType=BOOLEAN},
+      radarError = #{radarerror,jdbcType=BOOLEAN},
+      lastlog = #{lastlog,jdbcType=VARCHAR},
+      `comment` = #{comment,jdbcType=VARCHAR}
+    where radarID = #{radarid,jdbcType=VARCHAR}
+  </update>
+</mapper>

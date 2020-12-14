@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.RadarlogDao">
+  <resultMap id="BaseResultMap" type="generate.Radarlog">
+    <id column="logNum" jdbcType="VARCHAR" property="lognum" />
+    <result column="radarID" jdbcType="VARCHAR" property="radarid" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="log" jdbcType="VARCHAR" property="log" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    logNum, radarID, startTime, endTime, log
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from radarlog
+    where logNum = #{lognum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from radarlog
+    where logNum = #{lognum,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="logNum" keyProperty="lognum" parameterType="generate.Radarlog" useGeneratedKeys="true">
+    insert into radarlog (radarID, startTime, endTime, 
+      log)
+    values (#{radarid,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{log,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="logNum" keyProperty="lognum" parameterType="generate.Radarlog" useGeneratedKeys="true">
+    insert into radarlog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="radarid != null">
+        radarID,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+      <if test="log != null">
+        log,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="radarid != null">
+        #{radarid,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="log != null">
+        #{log,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.Radarlog">
+    update radarlog
+    <set>
+      <if test="radarid != null">
+        radarID = #{radarid,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="log != null">
+        log = #{log,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where logNum = #{lognum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.Radarlog">
+    update radarlog
+    set radarID = #{radarid,jdbcType=VARCHAR},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      log = #{log,jdbcType=VARCHAR}
+    where logNum = #{lognum,jdbcType=VARCHAR}
+  </update>
+</mapper>

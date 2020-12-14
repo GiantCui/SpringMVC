@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cui.dao.RadarDao">
+    <insert id="insertRadar" parameterType="Radar">
+        insert into subwaydb.radar(radarID, SirialNum, radarIP, port, comment)
+        values (uuid(), #{sirialnum}, #{radarip}, #{port}, #{comment})
+    </insert>
+
+    <update id="updateRadar" parameterType="Radar">
+        update subwaydb.radar
+        set SirialNum= #{sirialnum}, WorkState = #{workstate}, ForeignMatter = #{foreignmatter}, radarIP = #{radarip},
+            port = #{port}, safetyDoor=#{safetydoor}, radarError=#{radarerror}, comment=#{comment}
+        where radarID = #{radarid};
+    </update>
+
+    <delete id="deleteRadarById" parameterType="String">
+        delete from subwaydb.radar where radarID = #{radarid};
+    </delete>
+
+    <select id="queryRadarById" parameterType="Radar" resultType="Radar">
+        select * from subwaydb.radar
+        where radarID = #{radarid};
+    </select>
+
+    <select id="queryAllRadar" resultType="Radar">
+        select  * from subwaydb.radar
+    </select>
+
+
+</mapper>
