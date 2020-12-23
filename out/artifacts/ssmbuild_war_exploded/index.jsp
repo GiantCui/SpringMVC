@@ -110,7 +110,6 @@
     }
     body{
       background-size: cover;
-
     }
   </style>
 </head>
@@ -147,8 +146,5 @@
 </div>
 
 
-
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.cui.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.cui.pojo.Radar;
 import com.cui.service.RadarService;
 import com.cui.service.RadarServiceImpl;
@@ -64,5 +65,14 @@ public class RadarController {
     public String deleteRadar(String id){
         radarService.deleteRadarById(id);
         return "redirect:/radar/allRadar";
+    }
+
+    @RequestMapping("radarView")
+    public String radarView(Model model){
+        List<Radar> list = radarService.queryAllRadar();
+        String radars = JSON.toJSONString(list);
+        System.out.println("radarView ==> " + radars);
+        model.addAttribute("radars", radars);
+        return "radarView";
     }
 }

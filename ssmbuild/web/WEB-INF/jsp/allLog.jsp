@@ -47,7 +47,7 @@
             white-space: pre-wrap;
         }
         .container{
-            min-width: 1500px;
+            min-width: 1700px;
         }
     </style>
 </head>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="row container-fluid">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <table class="table table-hover table-striped">
                 <thead>
                 <tr>

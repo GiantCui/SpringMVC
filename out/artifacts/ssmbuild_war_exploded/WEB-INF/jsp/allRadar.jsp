@@ -59,7 +59,7 @@
             white-space: nowrap;
         }
         .container{
-            min-width: 1500px;
+            min-width: 1700px;
         }
     </style>
 
@@ -86,7 +86,7 @@
             <!--日志列表-->
             <a class="btn btn-primary" href="${pageContext.request.contextPath}/log/allLog">日志列表</a>
             <!--实时监控-->
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/log/allLog">实时监控</a>
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/radar/radarView">实时监控</a>
         </div>
         <div class="col-lg-4 ">
             <div class="input-group">

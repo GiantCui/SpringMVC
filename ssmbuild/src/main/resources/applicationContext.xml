@@ -9,4 +9,5 @@
     <import resource="spring-service.xml"/>
     <import resource="spring-mvc.xml"/>
     <mvc:resources mapping="/static/**" location="/static/" cache-period="604800"/>
+
 </beans>

@@ -17,6 +17,7 @@
     <!--扫描包-->
     <context:component-scan base-package="com.cui.controller"/>
 
+
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
@@ -37,5 +38,5 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-
+    <mvc:default-servlet-handler />
 </beans>

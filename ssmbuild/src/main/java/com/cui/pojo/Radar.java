@@ -1,6 +1,8 @@
 package com.cui.pojo;
 
 import java.io.Serializable;
+
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 /**
@@ -12,51 +14,61 @@ public class Radar implements Serializable {
     /**
      * 雷达id
      */
+    @JSONField(name = "radarID")
     private String radarid;
 
     /**
      * 雷达ip
      */
+    @JSONField(name = "radarIP")
     private String radarip;
 
     /**
      * 端口号
      */
+    @JSONField(name = "port")
     private String port;
 
     /**
      * 雷达编号
      */
+    @JSONField(name = "sirialnum")
     private String sirialnum;
 
     /**
      * 工作状态
      */
+    @JSONField(name = "workstate")
     private Boolean workstate;
 
     /**
      * 异物检测状态
      */
+    @JSONField(name = "foreignmatter")
     private Boolean foreignmatter;
 
     /**
      * 屏蔽门状态
      */
+    @JSONField(name = "safetydoor")
     private Boolean safetydoor;
 
     /**
      * 雷达异常
      */
+    @JSONField(name = "radarerror")
     private Boolean radarerror;
 
     /**
      * 最近日志编号
      */
+    @JSONField(name = "lastlog")
     private String lastlog;
 
     /**
      * 备注
      */
+    @JSONField(name = "comment")
     private String comment;
 
     private static final long serialVersionUID = 1L;
@@ -143,5 +155,21 @@ public class Radar implements Serializable {
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    @Override
+    public String toString() {
+        return "Radar{" +
+                "radarid='" + radarid + '\'' +
+                ", radarip='" + radarip + '\'' +
+                ", port='" + port + '\'' +
+                ", sirialnum='" + sirialnum + '\'' +
+                ", workstate=" + workstate +
+                ", foreignmatter=" + foreignmatter +
+                ", safetydoor=" + safetydoor +
+                ", radarerror=" + radarerror +
+                ", lastlog='" + lastlog + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
     }
 }
