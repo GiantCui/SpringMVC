@@ -35,6 +35,8 @@
           <element id="library" level="application" name="jquery" />
           <element id="library" level="application" name="bootstrap" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.34.sec10" />
+          <element id="library" level="project" name="Maven: javax.websocket:javax.websocket-api:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.1.4.RELEASE" />
         </element>
       </element>
     </root>

@@ -25,7 +25,7 @@
 
     </div>
 
-    <form action="${pageContext.request.contextPath}/radar/addRadar" method="post">
+    <form action="${pageContext.request.contextPath}/radar/addRadar?href=${href}" method="post">
         <div class="form-group">
             <label>雷达序列号</label>
             <input type="text" name="sirialnum" class="form-control" value="1" required>

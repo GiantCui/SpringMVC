@@ -38,7 +38,7 @@
 
     </div>
 
-    <form action="${pageContext.request.contextPath}/radar/updateRadar" method="post">
+    <form action="${pageContext.request.contextPath}/radar/updateRadar?href=${href}" method="post">
         <div class="form-group">
             <label>雷达id</label>
             <input type="text" name="radarid" class="form-control" value="${QRadar.radarid}" readonly>

@@ -61,50 +61,51 @@
         </div>
     </div>
 
-    <div class="row container-fluid">
-        <div class="col-md-12">
-            <table class="table table-hover table-striped">
-                <thead>
+
+</div>
+<div class="row container-fluid">
+    <div >
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>雷达id</th>
+                <th>IP地址</th>
+                <th>端口号</th>
+                <th>雷达编号</th>
+                <th>工作状态</th>
+                <th>异物检测状态</th>
+                <th>屏蔽门状态</th>
+                <th>警报状态</th>
+                <th>最近日志</th>
+                <th>备注</th>
+                <th>日志编号</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>日志信息</th>
+            </tr>
+            </thead>
+            <!--雷达从数据库中查询出来-->
+            <tbody>
+            <c:forEach var="log" items="${list}">
                 <tr>
-                    <th>雷达id</th>
-                    <th>IP地址</th>
-                    <th>端口号</th>
-                    <th>雷达编号</th>
-                    <th>工作状态</th>
-                    <th>异物检测状态</th>
-                    <th>屏蔽门状态</th>
-                    <th>警报状态</th>
-                    <th>最近日志</th>
-                    <th>备注</th>
-                    <th>日志编号</th>
-                    <th>开始时间</th>
-                    <th>结束时间</th>
-                    <th>日志信息</th>
+                    <td>${log.radarid}</td>
+                    <td>${log.radarip}</td>
+                    <td>${log.port}</td>
+                    <td>${log.sirialnum}</td>
+                    <td><script>document.write(myFunction(${log.workstate}))</script></td>
+                    <td><script>document.write(myFunction(${log.foreignmatter}))</script></td>
+                    <td><script>document.write(myFunction(${log.safetydoor}))</script></td>
+                    <td><script>document.write(myFunction(${log.radarerror}))</script></td>
+                    <td>${log.lastlog}</td>
+                    <td>${log.comment}</td>
+                    <td>${log.lognum}</td>
+                    <td>${log.starttime}</td>
+                    <td>${log.endtime}</td>
+                    <td>${log.log}</td>
                 </tr>
-                </thead>
-                <!--雷达从数据库中查询出来-->
-                <tbody>
-                <c:forEach var="log" items="${list}">
-                    <tr>
-                        <td>${log.radarid}</td>
-                        <td>${log.radarip}</td>
-                        <td>${log.port}</td>
-                        <td>${log.sirialnum}</td>
-                        <td><script>document.write(myFunction(${log.workstate}))</script></td>
-                        <td><script>document.write(myFunction(${log.foreignmatter}))</script></td>
-                        <td><script>document.write(myFunction(${log.safetydoor}))</script></td>
-                        <td><script>document.write(myFunction(${log.radarerror}))</script></td>
-                        <td>${log.lastlog}</td>
-                        <td>${log.comment}</td>
-                        <td>${log.lognum}</td>
-                        <td>${log.starttime}</td>
-                        <td>${log.endtime}</td>
-                        <td>${log.log}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>

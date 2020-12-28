@@ -114,7 +114,7 @@
   </style>
 </head>
 
-<body background="static/c5fd5d07eb463456fe981e26dde5cff5.jpg">
+<body background="../../static/c5fd5d07eb463456fe981e26dde5cff5.jpg">
 <div class="container">
   <div class="row row-centered">
     <div class="well col-md-6 col-centered">

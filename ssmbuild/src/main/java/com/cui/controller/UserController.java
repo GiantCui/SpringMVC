@@ -7,10 +7,14 @@ import com.cui.service.UserServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import javax.servlet.http.HttpSession;
+
+@Controller
 public class UserController {
 
     @Autowired
@@ -18,6 +22,7 @@ public class UserController {
     private UserServiceImpl userService;
 
     @RequestMapping("/checkUser")
+    @ResponseBody
     public String checkUser(String userid){
         System.out.println("userid  ==> " + userid);
         Users user = userService.queryByUserId(userid);
@@ -30,6 +35,7 @@ public class UserController {
     }
 
     @RequestMapping("/checkPwd")
+    @ResponseBody
     public String checkPwd(String userid, String pwd){
         System.out.println("userPwd  ==> " + userid);
         Users user = userService.queryByUserId(userid);
@@ -39,5 +45,13 @@ public class UserController {
         else {
             return "false";
         }
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession httpSession, String href){
+        String str = (String) httpSession.getAttribute("username");
+        System.out.println("注销用户 ==> " + str);
+        httpSession.removeAttribute("username");
+        return "index";
     }
 }

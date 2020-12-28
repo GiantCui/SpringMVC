@@ -32,33 +32,37 @@ public class RadarController {
     }
 
     @RequestMapping("/toAddRadar")
-    public String toAddRadar(){
+    public String toAddRadar(String href, Model model){
+        System.out.println("toAddRadar ==> " + href);
+        model.addAttribute("href", href);
         return "addRadar";
     }
 
     @RequestMapping("/addRadar")
-    public String addRadar(Radar radar){
+    public String addRadar(Radar radar, String href){
         System.out.println("addRadar ==> " + radar);
 
         radarService.insertRadar(radar);
 
 
-        return "redirect:/radar/allRadar";
+        return "redirect:" + href;
     }
 
     @RequestMapping("/toUpdate")
-    public String toUpdateRadar(String id, Model model){
+    public String toUpdateRadar(String id, String href, Model model){
         System.out.println("queryRadar ==> " + id);
         Radar radar = radarService.queryRadarById(id);
         model.addAttribute("QRadar", radar);
+        model.addAttribute("href", href);
         return "updateRadar";
     }
 
     @RequestMapping("updateRadar")
-    public String updateRadar(Radar radar){
+    public String updateRadar(Radar radar, String href){
         System.out.println("updateRadar ==> " + radar);
+        System.out.println("updateRadar ==> href:" + href);
         radarService.updateRadar(radar);
-        return "redirect:/radar/allRadar";
+        return "redirect:" + href;
     }
 
     @RequestMapping("deleteRadar")

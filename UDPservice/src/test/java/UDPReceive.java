@@ -6,7 +6,7 @@ import java.net.SocketException;
 public class UDPReceive implements Runnable{
 
 
-    private DatagramSocket client;
+    private final DatagramSocket client;
     private int clientPort;
 
     public UDPReceive(int clientPort) throws SocketException {

@@ -12,6 +12,7 @@
     <title>日志信息</title>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="../../js/radarViewer.js"></script>
+    <script type="text/javascript" src="../../js/webSocketJS.js"></script>
     <style>
         table{
             table-layout: auto;
@@ -52,7 +53,7 @@
             <div >
                 <ul class="nav navbar-nav">
                     <li><a href="${pageContext.request.contextPath}/radar/allRadar">雷达列表</a></li>
-                    <li><a href="#">Library</a></li>
+                    <li><a href="${pageContext.request.contextPath}/log/allLog">日志列表</a></li>
                 </ul>
             </div>
 
@@ -61,16 +62,14 @@
 
         <div class="col-lg-12">
             <table class="table table-bordered">
-
+                <%-- 显示雷达 --%>
                 <script>showRadars(${radars})</script>
-
-
-
                 <%-- 图例示意 --%>
-                <script>document.write(showAnnotation())</script>
-
-
+                <script>showAnnotation()</script>
             </table>
+        </div>
+        <div class="col-lg-12" id="conslelog">
+            <textarea class="form-control" id="message" rows="3" readonly></textarea>
         </div>
     </div>
 

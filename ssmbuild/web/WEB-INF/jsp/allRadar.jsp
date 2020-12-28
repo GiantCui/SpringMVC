@@ -70,7 +70,9 @@
 
     <div class="row container-fluid">
         <div class="col-xl-1">
+            <a href="${pageContext.request.contextPath}/logout" style="float: right">注销</a>
             <label style="float: right">欢迎您，<%=session.getAttribute("username")%></label>
+
         </div>
         <div class="col-xl-11 column">
             <div class="page-header">
@@ -82,7 +84,7 @@
     <div class="row container-fluid">
         <div class="col-md-8 column">
             <!--新增雷达-->
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/radar/toAddRadar">新增雷达</a>
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/radar/toAddRadar?href=/radar/allRadar">新增雷达</a>
             <!--日志列表-->
             <a class="btn btn-primary" href="${pageContext.request.contextPath}/log/allLog">日志列表</a>
             <!--实时监控-->
@@ -147,7 +149,7 @@
                             <td>${radar.lastlog}</td>
                             <td>${radar.comment}</td>
                             <td id="option">
-                                <a href="${pageContext.request.contextPath}/radar/toUpdate?id=${radar.radarid}">修改</a>
+                                <a href="${pageContext.request.contextPath}/radar/toUpdate?id=${radar.radarid}&href=/radar/allRadar">修改</a>
                                 &nbsp; | &nbsp;
                                 <a href="${pageContext.request.contextPath}/radar/deleteRadar?id=${radar.radarid}">删除</a>
                             </td>
