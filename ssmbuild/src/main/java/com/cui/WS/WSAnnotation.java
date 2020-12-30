@@ -27,7 +27,6 @@ public class WSAnnotation {
     private Session session;
     private UDPReceive udpRcv;
     private static int clientPort = 8888;
-    private static final String clientIP = "192.168.1.96";
 
     /**
      * 连接建立成功调用的方法
@@ -67,15 +66,7 @@ public class WSAnnotation {
         }
     }
 
-    public void exitUDPRcv() throws IOException {
-        DatagramSocket server = new DatagramSocket(1234);
-        String str = "exit";
-        byte []bytes = str.getBytes();
-        InetAddress add = InetAddress.getByName(clientIP);
-        DatagramPacket data = new DatagramPacket(bytes, 0, bytes.length, add, clientPort);
-        server.send(data);
-        server.close();
-    }
+
 
     public void sendMessage(String message) throws IOException{
         this.session.getBasicRemote().sendText(message);

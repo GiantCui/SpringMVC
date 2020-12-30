@@ -71,6 +71,7 @@
     <div class="row container-fluid">
         <div class="col-xl-1">
             <a href="${pageContext.request.contextPath}/logout" style="float: right">注销</a>
+            <a href="${pageContext.request.contextPath}/cfg/ipconfig" style="float: right">注销</a>
             <label style="float: right">欢迎您，<%=session.getAttribute("username")%></label>
 
         </div>

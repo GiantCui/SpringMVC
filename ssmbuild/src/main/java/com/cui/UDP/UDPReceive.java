@@ -59,7 +59,7 @@ public class UDPReceive implements Runnable {
 
             System.out.println(add.toString() + str );
 
-            this.session.getBasicRemote().sendText(add.getHostAddress().toString() + ":\n" + str);
+            this.session.getBasicRemote().sendText(add.getHostAddress().toString() + ":" + str);
 
             if ("exit".equals(str)){
                 client.close();

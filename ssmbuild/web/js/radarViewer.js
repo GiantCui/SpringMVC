@@ -22,10 +22,10 @@ function showAnnotation(){
                 "<label>屏蔽门打开</label>\n" +
             "</td>\n" +
             "<td colspan=\"7\" rowspan='3'>" +
-                "<img src=\"/static/门禁-关.svg\" height=\"500px\" width=\"500px\" alt=\"屏蔽门\"><br>\n" +
+                "<img src=\"/static/门禁-关.svg\" height=\"500px\" width=\"500px\" alt=\"屏蔽门\" id=\'door\'><br>\n" +
             "</td>\n" +
             "<td colspan=\"7\" rowspan='3'>" +
-                "<img src=\"/static/警铃green.svg\" height=\"500px\" width=\"500px\" alt=\"警铃\"><br>\n" +
+                "<img src=\"/static/警铃green.svg\" height=\"500px\" width=\"500px\" alt=\"警铃\" id=\'ring\'><br>\n" +
             "</td>\n" +
         "</tr>"
 

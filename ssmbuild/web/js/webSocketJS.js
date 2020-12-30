@@ -19,6 +19,17 @@ websocket.onopen = function () {
 
 //接收到消息的回调方法
 websocket.onmessage = function (event) {
+    const img = document.getElementById('ring')
+    const str = event.data.split(":")[1]
+    console.log(str)
+    if (str === 'red'){
+        console.log("发来消息 ==> " + str)
+        img.src = "/static/警铃red.svg"
+    }
+    else {
+        console.log("发来消息 ==> " + str)
+        img.src = "/static/警铃green.svg"
+    }
     setMessageInnerHTML(event.data);
 }
 
