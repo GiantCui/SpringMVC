@@ -69,11 +69,12 @@
 <div class="container">
 
     <div class="row container-fluid">
-        <div class="col-xl-1">
-            <a href="${pageContext.request.contextPath}/logout" style="float: right">注销</a>
-            <a href="${pageContext.request.contextPath}/cfg/ipconfig" style="float: right">注销</a>
-            <label style="float: right">欢迎您，<%=session.getAttribute("username")%></label>
-
+        <div class="col-xl-1" style="float: right">
+            <label>欢迎您，<%=session.getAttribute("username")%></label>
+            &nbsp;
+            <a href="${pageContext.request.contextPath}/cfg/ipconfig">设置</a>
+            &nbsp; | &nbsp;
+            <a href="${pageContext.request.contextPath}/logout">注销</a>
         </div>
         <div class="col-xl-11 column">
             <div class="page-header">

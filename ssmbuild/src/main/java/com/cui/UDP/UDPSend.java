@@ -8,21 +8,26 @@ import java.net.*;
 public class UDPSend implements Runnable{
 
     private DatagramSocket server;
-    private int serverPort;
-    private String clientIP;
-    private int clientPort;
-    private SocketAddress localAdd;
-    private SocketAddress destAdd;
+    private final String clientIP;
+    private final int clientPort;
 
-    public UDPSend(int serverPort, String clientIP, int clientPort) throws SocketException {
-        this.serverPort = serverPort;
+
+    public UDPSend(String clientIP, int clientPort) throws SocketException {
         this.clientIP = clientIP;
         this.clientPort = clientPort;
         try{
-            this.server = new DatagramSocket(this.serverPort);
+            this.server = new DatagramSocket(1234);
         }catch (SocketException e){
             e.printStackTrace();
         }
+    }
+
+    public void sendMessage(String message) throws IOException {
+        byte[] bytes = message.getBytes();
+        InetAddress add = InetAddress.getByName(clientIP);
+        DatagramPacket data = new DatagramPacket(bytes, 0, bytes.length, add, this.clientPort);
+        server.send(data);
+        server.close();
     }
 
     public void run() {

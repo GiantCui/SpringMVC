@@ -26,7 +26,10 @@ public class RadarController {
     public String list(HttpSession session, String userid, String pwd, Model model) throws Exception{
         System.out.println("User, pwd==>" + userid + pwd);
         List<Radar> list = radarService.queryAllRadar();
-        session.setAttribute("username", userid);
+        if (session.getAttribute("username") == null){
+            session.setAttribute("username", userid);
+        }
+
         model.addAttribute("list", list);
         return "allRadar";
     }

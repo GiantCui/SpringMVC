@@ -16,11 +16,40 @@
     <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 </head>
 <body>
-<form>
-    <div class="form-group">
-        <label for="exampleInputEmail1">IP address</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder=${ipaddress} readonly>
+<div class="container">
+
+    <div class="col-xl-11 column">
+        <div class="page-header">
+            <h2 class="text-center">设置</h2>
+        </div>
     </div>
-</form>
+    <form action="${pageContext.request.contextPath}/updateCfg" method="get">
+        <div class="form-group col-lg-12" >
+            <div class="col-md-6">
+                <label>本机IP地址</label>
+                <input type="text" class="form-control" placeholder=${localAddress} readonly>
+            </div>
+            <div class="col-md-6">
+                <label>接受端口号</label>
+                <input type="text" class="form-control" name="receivePort" placeholder=${serverPort}>
+            </div>
+        </div>
+        <div class="form-group col-lg-12" >
+            <div class="col-md-6">
+                <label>目标IP地址</label>
+                <input type="text" class="form-control" name="targetIP" placeholder=${targetAddress}>
+            </div>
+            <div class="col-md-6">
+                <label>发送端口号</label>
+                <input type="text" class="form-control" name="sendPort" placeholder=${clientPort}>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="form-control" value="确定">
+        </div>
+    </form>
+
+
+</div>
 </body>
 </html>

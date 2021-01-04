@@ -2,6 +2,7 @@ package com.cui.listeners;
 
 import com.cui.UDP.UDPReceive;
 import com.cui.UDP.UDPSend;
+import com.cui.config.ipConfig;
 import lombok.SneakyThrows;
 
 import javax.servlet.ServletContext;
@@ -24,19 +25,9 @@ public class sessionAttrListener implements HttpSessionAttributeListener {
     }
 
     private void ipInit() throws IOException {
-        Properties properties = new Properties();
-        properties.load(sessionAttrListener.class.getClassLoader().getResourceAsStream("ipconfig.properties"));
-        //InputStream in = sessionAttrListener.class.getClassLoader().getResourceAsStream("ipconfig.properties");
-
-        FileOutputStream out =  new FileOutputStream(sessionAttrListener.class.getClassLoader().getResource("ipconfig.properties").getPath());
-
-        String old_address = properties.getProperty("ipaddress");
-        properties.setProperty("ipaddress", InetAddress.getLocalHost().getHostAddress());
-        String ipaddress = properties.getProperty("ipaddress");
-
-        System.out.println("ipaddress ==> " + old_address + "==>" + ipaddress);
-        properties.store(out, "updata");
-        out.close();
+        //更新本机IP地址
+        ipConfig config = new ipConfig();
+        config.updateLocalIP();
     }
 
     public void attributeRemoved(HttpSessionBindingEvent httpSessionBindingEvent) {
