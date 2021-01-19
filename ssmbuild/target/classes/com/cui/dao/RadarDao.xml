@@ -9,9 +9,14 @@
         values (uuid(), #{sirialnum}, #{radarip}, #{port}, #{comment})
     </insert>
 
+    <insert id="initRadar" parameterType="Radar">
+        insert into subwaydb.radar(radarID, SirialNum, workstate, foreignmatter, safetydoor, doorstate)
+        values (uuid(), #{sirialnum}, #{workstate}, #{foreignmatter}, #{safetydoor}, #{doorstate})
+    </insert>
+
     <update id="updateRadar" parameterType="Radar">
         update subwaydb.radar
-        set SirialNum= #{sirialnum}, WorkState = #{workstate}, ForeignMatter = #{foreignmatter}, radarIP = #{radarip},
+        set SirialNum= #{sirialnum}, WorkState = #{workstate}, ForeignMatter = #{foreignmatter},, radarIP = #{radarip},
             port = #{port}, safetyDoor=#{safetydoor}, radarError=#{radarerror}, comment=#{comment}
         where radarID = #{radarid};
     </update>

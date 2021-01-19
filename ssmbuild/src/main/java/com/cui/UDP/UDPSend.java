@@ -16,7 +16,7 @@ public class UDPSend implements Runnable{
         this.clientIP = clientIP;
         this.clientPort = clientPort;
         try{
-            this.server = new DatagramSocket(1234);
+            this.server = new DatagramSocket(8887);
         }catch (SocketException e){
             e.printStackTrace();
         }

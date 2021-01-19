@@ -36,4 +36,8 @@ public class ipConfig {
     public void setProperties(String name, String value) throws IOException {
         properties.setProperty(name, value);
     }
+
+    public String getProperties(String name){
+        return properties.getProperty(name);
+    }
 }

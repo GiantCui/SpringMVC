@@ -1,0 +1,7 @@
+{
+	"cmd":"INIT_R", 
+	"RADAR":[
+		{"RADAR_ID":"adfc", "R_STATE":"1", "R_RING":"0", "D_STATE":"1", "D_ON_OFF":"1"},
+		{"RADAR_ID":"adfc", "R_STATE":"1", "R_RING":"0", "D_STATE":"1", "D_ON_OFF":"1"}
+	]
+}

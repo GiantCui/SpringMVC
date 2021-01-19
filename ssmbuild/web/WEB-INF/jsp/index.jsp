@@ -120,7 +120,7 @@
     <div class="well col-md-6 col-centered">
       <h2>欢迎登录</h2>
 
-      <form action="${pageContext.request.contextPath}/radar/allRadar" method="post" role="form" onsubmit="return formsubmit();">
+      <form action="${pageContext.request.contextPath}/radar/radarView" method="post" role="form" onsubmit="return formsubmit();">
         <div class="form-group has-success has feedback">
           <div class="input-group input-group-md ">
             <span class="input-group-addon" ><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>

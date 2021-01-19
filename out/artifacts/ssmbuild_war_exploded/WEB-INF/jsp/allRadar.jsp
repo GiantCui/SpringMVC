@@ -69,13 +69,6 @@
 <div class="container">
 
     <div class="row container-fluid">
-        <div class="col-xl-1" style="float: right">
-            <label>欢迎您，<%=session.getAttribute("username")%></label>
-            &nbsp;
-            <a href="${pageContext.request.contextPath}/cfg/ipconfig">设置</a>
-            &nbsp; | &nbsp;
-            <a href="${pageContext.request.contextPath}/logout">注销</a>
-        </div>
         <div class="col-xl-11 column">
             <div class="page-header">
                 <h2 class="text-center">雷达列表——显示所有雷达</h2>
@@ -87,10 +80,6 @@
         <div class="col-md-8 column">
             <!--新增雷达-->
             <a class="btn btn-primary" href="${pageContext.request.contextPath}/radar/toAddRadar?href=/radar/allRadar">新增雷达</a>
-            <!--日志列表-->
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/log/allLog">日志列表</a>
-            <!--实时监控-->
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/radar/radarView">实时监控</a>
         </div>
         <div class="col-lg-4 ">
             <div class="input-group">
@@ -123,6 +112,7 @@
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
+                        <th>序号</th>
                         <th>雷达ID</th>
                         <th>IP地址</th>
                         <th>端口号</th>
@@ -138,8 +128,9 @@
                 </thead>
                 <!--雷达从数据库中查询出来-->
                 <tbody>
-                    <c:forEach var="radar" items="${list}">
+                    <c:forEach var="radar" items="${list}" varStatus="num">
                         <tr>
+                            <td>${num.count}</td>
                             <td>${radar.radarid}</td>
                             <td>${radar.radarip}</td>
                             <td>${radar.port}</td>

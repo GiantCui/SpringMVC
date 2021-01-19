@@ -2,8 +2,8 @@ package com.cui.service;
 
 import com.cui.dao.RadarDao;
 import com.cui.pojo.Radar;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,18 +19,25 @@ public class RadarServiceImpl implements RadarService{
     }
 
     //新增一个雷达
-    public int insertRadar(Radar radar) {
-        return radarDao.insertRadar((Radar) radar);
+    public void insertRadar(Radar radar) {
+        radarDao.insertRadar((Radar) radar);
+    }
+
+    // 初始化雷达
+    public void initRadar(Radar radar){
+        System.out.println("service层初始化雷达");
+
+        radarDao.initRadar(radar);
     }
 
     //删除一个雷达
-    public int deleteRadarById(String id) {
-        return radarDao.deleteRadarById(id);
+    public void deleteRadarById(String id) {
+        radarDao.deleteRadarById(id);
     }
 
     //更新一个雷达
-    public int updateRadar(Radar radar) {
-        return radarDao.updateRadar((Radar) radar);
+    public void updateRadar(Radar radar) {
+        radarDao.updateRadar((Radar) radar);
     }
 
     //查询一个雷达

@@ -9,6 +9,9 @@ public interface RadarDao {
     //新增一个雷达
     int insertRadar(Radar radar);
 
+    //初始化雷达
+    int initRadar(Radar radar);
+
     //删除一个雷达
     int deleteRadarById(@Param("radarid") String id);
 

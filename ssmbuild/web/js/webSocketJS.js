@@ -20,17 +20,28 @@ websocket.onopen = function () {
 //接收到消息的回调方法
 websocket.onmessage = function (event) {
     const img = document.getElementById('ring')
-    const str = event.data.split(":")[1]
-    console.log(str)
+    const sound = document.getElementById("sound")
+    const str = event.data
+    try {
+        const object = JSON.parse(str);
+        console.log(object)
+    } catch (error){
+        console.log("接受消息非JSON对象")
+    }
+
     if (str === 'red'){
         console.log("发来消息 ==> " + str)
-        img.src = "/static/警铃red.svg"
+        img.src = "/static/ring.gif"
+        sound.play()
     }
     else {
         console.log("发来消息 ==> " + str)
+        sound.pause()
         img.src = "/static/警铃green.svg"
     }
-    setMessageInnerHTML(event.data);
+    websocket.send(str)
+    console.log("收到")
+    setMessageInnerHTML(event.data)
 }
 
 //连接关闭的回调方法

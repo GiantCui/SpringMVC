@@ -7,7 +7,7 @@ import lombok.Data;
 
 /**
  * radar
- * @author
+ * @author cui
  */
 @Data
 public class Radar implements Serializable {
@@ -39,25 +39,31 @@ public class Radar implements Serializable {
      * 工作状态
      */
     @JSONField(name = "workstate")
-    private Boolean workstate;
+    private String workstate;
 
     /**
      * 异物检测状态
      */
     @JSONField(name = "foreignmatter")
-    private Boolean foreignmatter;
+    private String foreignmatter;
 
     /**
-     * 屏蔽门状态
+     * 屏蔽门工作状态
      */
     @JSONField(name = "safetydoor")
-    private Boolean safetydoor;
+    private String safetydoor;
+
+    /**
+     * 屏蔽门开关状态
+     */
+    @JSONField(name = "doorstate")
+    private String doorstate;
 
     /**
      * 雷达异常
      */
     @JSONField(name = "radarerror")
-    private Boolean radarerror;
+    private String radarerror;
 
     /**
      * 最近日志编号
@@ -105,35 +111,43 @@ public class Radar implements Serializable {
         this.sirialnum = sirialnum;
     }
 
-    public Boolean getWorkstate() {
+    public String getWorkstate() {
         return workstate;
     }
 
-    public void setWorkstate(Boolean workstate) {
+    public void setWorkstate(String workstate) {
         this.workstate = workstate;
     }
 
-    public Boolean getForeignmatter() {
+    public String getForeignmatter() {
         return foreignmatter;
     }
 
-    public void setForeignmatter(Boolean foreignmatter) {
+    public void setForeignmatter(String foreignmatter) {
         this.foreignmatter = foreignmatter;
     }
 
-    public Boolean getSafetydoor() {
+    public String getSafetydoor() {
         return safetydoor;
     }
 
-    public void setSafetydoor(Boolean safetydoor) {
+    public void setSafetydoor(String safetydoor) {
         this.safetydoor = safetydoor;
     }
 
-    public Boolean getRadarerror() {
+    public String getDoorstate() {
+        return doorstate;
+    }
+
+    public void setDoorstate(String doorstate) {
+        this.doorstate = doorstate;
+    }
+
+    public String getRadarerror() {
         return radarerror;
     }
 
-    public void setRadarerror(Boolean radarerror) {
+    public void setRadarerror(String radarerror) {
         this.radarerror = radarerror;
     }
 
@@ -157,6 +171,8 @@ public class Radar implements Serializable {
         return serialVersionUID;
     }
 
+
+
     @Override
     public String toString() {
         return "Radar{" +
@@ -167,6 +183,7 @@ public class Radar implements Serializable {
                 ", workstate=" + workstate +
                 ", foreignmatter=" + foreignmatter +
                 ", safetydoor=" + safetydoor +
+                ", doorstate=" + doorstate +
                 ", radarerror=" + radarerror +
                 ", lastlog='" + lastlog + '\'' +
                 ", comment='" + comment + '\'' +

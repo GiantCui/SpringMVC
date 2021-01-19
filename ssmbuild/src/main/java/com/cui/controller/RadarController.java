@@ -2,6 +2,7 @@ package com.cui.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.cui.pojo.Radar;
 import com.cui.service.RadarService;
 import com.cui.service.RadarServiceImpl;
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,13 +26,8 @@ public class RadarController {
     private RadarService radarService;
 
     @RequestMapping("/allRadar")
-    public String list(HttpSession session, String userid, String pwd, Model model) throws Exception{
-        System.out.println("User, pwd==>" + userid + pwd);
+    public String list(Model model) throws Exception{
         List<Radar> list = radarService.queryAllRadar();
-        if (session.getAttribute("username") == null){
-            session.setAttribute("username", userid);
-        }
-
         model.addAttribute("list", list);
         return "allRadar";
     }
@@ -52,20 +50,22 @@ public class RadarController {
     }
 
     @RequestMapping("/toUpdate")
-    public String toUpdateRadar(String id, String href, Model model){
+    @ResponseBody
+    public String toUpdateRadar(String id, Model model){
         System.out.println("queryRadar ==> " + id);
         Radar radar = radarService.queryRadarById(id);
         model.addAttribute("QRadar", radar);
-        model.addAttribute("href", href);
-        return "updateRadar";
+        //model.addAttribute("href", href);
+        return JSON.toJSONString(radar);
     }
 
     @RequestMapping("updateRadar")
-    public String updateRadar(Radar radar, String href){
+    @ResponseBody
+    public String updateRadar(@RequestBody Radar radar){
+
         System.out.println("updateRadar ==> " + radar);
-        System.out.println("updateRadar ==> href:" + href);
         radarService.updateRadar(radar);
-        return "redirect:" + href;
+        return "success";
     }
 
     @RequestMapping("deleteRadar")
@@ -75,7 +75,10 @@ public class RadarController {
     }
 
     @RequestMapping("radarView")
-    public String radarView(Model model){
+    public String radarView(HttpSession session, String userid, String pwd, Model model){
+        if (session.getAttribute("username") == null){
+            session.setAttribute("username", userid);
+        }
         List<Radar> list = radarService.queryAllRadar();
         String radars = JSON.toJSONString(list);
         System.out.println("radarView ==> " + radars);
