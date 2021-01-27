@@ -1,7 +1,16 @@
 {
-	"cmd":"INIT_R", 
-	"RADAR":[
-		{"RADAR_ID":"adfc", "R_STATE":"1", "R_RING":"0", "D_STATE":"1", "D_ON_OFF":"1"},
-		{"RADAR_ID":"adfc", "R_STATE":"1", "R_RING":"0", "D_STATE":"1", "D_ON_OFF":"1"}
-	]
+"cmd":"INIT_R",
+"RADAR":[
+	{"sirialnum":"10", "workstate":"1", "foreignmatter":"0", "safetydoor":"1", "doorstate":"1","ringPst":"10,10","warnRng":"10","doorSize":"100,100","gap":"100,100"},
+	{"sirialnum":"11", "workstate":"1", "foreignmatter":"0", "safetydoor":"1", "doorstate":"1","ringPst":"10,10","warnRng":"10","doorSize":"100,100","gap":"100,100"}
+		]
 }
+
+{"cmd":"INIT_R","RADAR":[{"sirialnum":"11", "workstate":"1", "foreignmatter":"0", "safetydoor":"1", "doorstate":"1","ringPst":"10,10","warnRng":"10","doorSize":"100,100","gap":"100,100"}]}
+{"cmd":"INIT_R", "RADAR":[{"radarip":"0.0.0.0", "port":"0000", "sirialnum":"1", "comment":"测试"},{"sirialnum":"2", "workstate":"1", "foreignmatter":"0", "safetydoor":"1", "doorstate":"1"}]}
+
+{
+	"cmd":"foreignmatter",
+	"sirialnum":"11"
+}
+

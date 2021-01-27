@@ -4,23 +4,13 @@ package com.cui.WS;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.cui.UDP.UDPReceive;
-import com.cui.controller.RadarController;
 import com.cui.controller.udpController;
 import com.cui.pojo.Radar;
-import com.cui.service.RadarService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.net.*;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArraySet;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 
@@ -50,7 +40,8 @@ public class WSAnnotation {
         int clientPort = 8888;
         udpRcv = new UDPReceive(clientPort, session);
         udpRcv.setState(Boolean.TRUE);
-        new Thread(udpRcv).start();
+        Thread thread = new Thread(udpRcv);
+        thread.start();
         System.out.println("开始监听, 端口号：\t" + clientPort);
     }
 
@@ -73,16 +64,17 @@ public class WSAnnotation {
             // 转换JSON数据
             JSONObject data = JSON.parseObject(message);
             // 获取命令名
-            Cmd cmd = Cmd.valueOf(data.getString("cmd"));
+            Cmd cmd = Cmd.valueOf(data.getString("cmd").toUpperCase());
             System.out.println("收到命令" + cmd);
             // 判断命令
             switch (cmd){
                 case INIT_R: init_R(data); break;
                 case STATE_CHG: break;
+                case FOREIGNMATTER_T: foreignMatter(); break;
             }
             // 解析JSON字符串
             //List<IPC> IPCS = JSON.parseArray(data.getJSONArray("ipc").toJSONString(), IPC.class);
-        }catch (Exception e){/.
+        }catch (Exception e){
             System.out.println(e.toString());
             System.out.println("收到命令非JSON格式");
         }
@@ -98,7 +90,10 @@ public class WSAnnotation {
         }
     }
 
+    private void foreignMatter(){
+
+    }
     private enum Cmd{
-        INIT_R, STATE_CHG
+        INIT_R, STATE_CHG, FOREIGNMATTER_T
     }
 }

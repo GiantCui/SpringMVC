@@ -58,6 +58,7 @@ public class UDPReceive implements Runnable {
             }
             //获取发送方地址
             InetAddress address = packet.getAddress();
+
             byte[] data = packet.getData();
 
             int length = packet.getLength();

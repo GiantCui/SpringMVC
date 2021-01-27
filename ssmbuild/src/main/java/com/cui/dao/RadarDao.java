@@ -21,6 +21,8 @@ public interface RadarDao {
     //查询一个雷达
     Radar queryRadarById(String id);
 
+    Radar queryRadarBySirialnum(String id);
+
     //查询全部雷达
     List<Radar> queryAllRadar();
 

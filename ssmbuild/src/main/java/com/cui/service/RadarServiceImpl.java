@@ -25,8 +25,6 @@ public class RadarServiceImpl implements RadarService{
 
     // 初始化雷达
     public void initRadar(Radar radar){
-        System.out.println("service层初始化雷达");
-
         radarDao.initRadar(radar);
     }
 
@@ -43,6 +41,10 @@ public class RadarServiceImpl implements RadarService{
     //查询一个雷达
     public Radar queryRadarById(String id) {
         return radarDao.queryRadarById(id);
+    }
+
+    public Radar queryRadarBySirialnum(String id) {
+        return radarDao.queryRadarBySirialnum(id);
     }
 
     //查询全部雷达

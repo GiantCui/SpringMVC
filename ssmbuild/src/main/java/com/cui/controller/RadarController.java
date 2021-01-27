@@ -62,9 +62,14 @@ public class RadarController {
     @RequestMapping("updateRadar")
     @ResponseBody
     public String updateRadar(@RequestBody Radar radar){
+        try{
+            radarService.updateRadar(radar);
+        }catch (Exception exception){
+            System.out.println("updateRadar ==> " + radar);
+            System.out.println(exception.toString());
+        }
 
-        System.out.println("updateRadar ==> " + radar);
-        radarService.updateRadar(radar);
+
         return "success";
     }
 
@@ -84,5 +89,14 @@ public class RadarController {
         System.out.println("radarView ==> " + radars);
         model.addAttribute("radars", radars);
         return "radarView";
+    }
+
+    @RequestMapping("getRadar")
+    @ResponseBody
+    public String getRadar(String sirialnum){
+        Radar radar = radarService.queryRadarBySirialnum(sirialnum);
+        String doorSize = radar.getDoorSize() + "," +radar.getWarnRng();
+        System.out.println("getRadar==>" + doorSize);
+        return doorSize;
     }
 }

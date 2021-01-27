@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +34,7 @@ public class ipcController {
             JSONObject data = JSON.parseObject(ls);
             // 解析JSON字符串
             IPCS = JSON.parseArray(data.getJSONArray("ipc").toJSONString(), IPC.class);
+            IPCS_ = IPCS;
         }
         else {
             IPCS = IPCS_;
@@ -133,8 +133,14 @@ public class ipcController {
     @RequestMapping("/initRadar")
     @ResponseBody
     public String initRadar(String  ipcs) throws IOException {
-        UDPSend udpSend = new UDPSend("192.168.137.1", 8888);
-        udpSend.sendMessage("INIT");
+        for (IPC ipc : IPCS_) {
+            String clientIP = ipc.getId();
+            int clientPort = Integer.parseInt(ipc.getPort());
+            UDPSend udpSend = new UDPSend(clientIP, clientPort);
+            udpSend.sendMessage("\"cmd\":\"INIT\"");
+            System.out.println("正在发送信息：" + clientIP + "/" + clientPort);
+        }
+
         return "success";
     }
 }

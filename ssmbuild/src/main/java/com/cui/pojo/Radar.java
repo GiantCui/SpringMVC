@@ -77,7 +77,63 @@ public class Radar implements Serializable {
     @JSONField(name = "comment")
     private String comment;
 
+    /**
+     * 报警位置
+     */
+    @JSONField(name = "ringPst")
+    private String ringPst;
+
+    /**
+     * 预报警范围
+     */
+    @JSONField(name = "warnRng")
+    private String warnRng;
+
+    /**
+     * 门大小
+     */
+    @JSONField(name = "doorSize")
+    private String doorSize;
+
+    /**
+     * 雷达距门距离
+     */
+    @JSONField(name = "gap")
+    private String gap;
+
     private static final long serialVersionUID = 1L;
+
+    public String getRingPst() {
+        return ringPst;
+    }
+
+    public void setRingPst(String ringPst) {
+        this.ringPst = ringPst;
+    }
+
+    public String getWarnRng() {
+        return warnRng;
+    }
+
+    public void setWarnRng(String warnRng) {
+        this.warnRng = warnRng;
+    }
+
+    public String getDoorSize() {
+        return doorSize;
+    }
+
+    public void setDoorSize(String doorSize) {
+        this.doorSize = doorSize;
+    }
+
+    public String getGap() {
+        return gap;
+    }
+
+    public void setGap(String gap) {
+        this.gap = gap;
+    }
 
     public String getRadarid() {
         return radarid;
@@ -171,8 +227,6 @@ public class Radar implements Serializable {
         return serialVersionUID;
     }
 
-
-
     @Override
     public String toString() {
         return "Radar{" +
@@ -180,13 +234,17 @@ public class Radar implements Serializable {
                 ", radarip='" + radarip + '\'' +
                 ", port='" + port + '\'' +
                 ", sirialnum='" + sirialnum + '\'' +
-                ", workstate=" + workstate +
-                ", foreignmatter=" + foreignmatter +
-                ", safetydoor=" + safetydoor +
-                ", doorstate=" + doorstate +
-                ", radarerror=" + radarerror +
+                ", workstate='" + workstate + '\'' +
+                ", foreignmatter='" + foreignmatter + '\'' +
+                ", safetydoor='" + safetydoor + '\'' +
+                ", doorstate='" + doorstate + '\'' +
+                ", radarerror='" + radarerror + '\'' +
                 ", lastlog='" + lastlog + '\'' +
                 ", comment='" + comment + '\'' +
+                ", ringPst='" + ringPst + '\'' +
+                ", warnRng='" + warnRng + '\'' +
+                ", doorSize='" + doorSize + '\'' +
+                ", gap='" + gap + '\'' +
                 '}';
     }
 }
