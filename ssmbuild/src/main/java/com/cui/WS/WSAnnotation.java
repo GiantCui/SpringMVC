@@ -29,7 +29,7 @@ public class WSAnnotation {
     private static final int onlineCount = 0;
     private static final CopyOnWriteArraySet<WSAnnotation> webSocketSet = new CopyOnWriteArraySet<WSAnnotation>();
     private UDPReceive udpRcv;
-
+    private udpController udpCtr;
 
     /**
      * 连接建立成功调用的方法
@@ -40,6 +40,7 @@ public class WSAnnotation {
         int clientPort = 8888;
         udpRcv = new UDPReceive(clientPort, session);
         udpRcv.setState(Boolean.TRUE);
+        udpCtr = new udpController();
         Thread thread = new Thread(udpRcv);
         thread.start();
         System.out.println("开始监听, 端口号：\t" + clientPort);
@@ -70,7 +71,11 @@ public class WSAnnotation {
             switch (cmd){
                 case INIT_R: init_R(data); break;
                 case STATE_CHG: break;
-                case FOREIGNMATTER_T: foreignMatter(); break;
+                case FOREIGNMATTER_T:
+                case FOREIGNMATTER_F:
+                    foreignMatter(cmd.toString(), data.getString("serialnum")); break;
+                case ALARMELIMINATION: alarmElimination(data); break;
+                case BYPASSALL: byPassAll(); break;
             }
             // 解析JSON字符串
             //List<IPC> IPCS = JSON.parseArray(data.getJSONArray("ipc").toJSONString(), IPC.class);
@@ -85,15 +90,26 @@ public class WSAnnotation {
         List<Radar> radars = JSON.parseArray(data.getJSONArray("RADAR").toJSONString(), Radar.class);
         for (Radar radar : radars) {
             System.out.println(radar);
-            udpController udpController = new udpController();
-            udpController.initRadar(radar);
+            udpCtr.initRadar(radar);
         }
     }
 
-    private void foreignMatter(){
+    private void foreignMatter(String command, String serialnum){
+        udpCtr.updateRadar(command, serialnum);
+    }
 
+    private void alarmElimination(JSONObject data){
+        List<String> lists = JSON.parseArray(data.getJSONArray("warn_num").toJSONString(), String.class);
+        for (String ls : lists){
+            foreignMatter(Cmd.FOREIGNMATTER_F.toString(), ls);
+        }
+    }
+
+    private void byPassAll(){
+        udpCtr.byPassAll();
     }
     private enum Cmd{
-        INIT_R, STATE_CHG, FOREIGNMATTER_T
+        INIT_R, STATE_CHG, FOREIGNMATTER_T, FOREIGNMATTER_F, ALARMELIMINATION,
+        BYPASSALL
     }
 }

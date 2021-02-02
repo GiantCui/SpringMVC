@@ -17,7 +17,8 @@
     <update id="updateRadar" parameterType="Radar">
         update subwaydb.radar
         set SirialNum= #{sirialnum}, WorkState = #{workstate}, ForeignMatter = #{foreignmatter}, radarIP = #{radarip},
-            port = #{port}, safetyDoor=#{safetydoor}, radarError=#{radarerror}, comment=#{comment}
+            port = #{port}, safetyDoor=#{safetydoor}, radarError=#{radarerror}, comment=#{comment}, ringPst = #{ringPst},
+            warnRng = #{warnRng}, doorSize=#{doorSize}, gap=#{gap}
         where radarID = #{radarid};
     </update>
 

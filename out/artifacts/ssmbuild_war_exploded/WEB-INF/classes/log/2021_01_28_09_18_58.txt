@@ -1,0 +1,4 @@
+2021:01:28:09:14:49
+4023/192.168.2.107:{"cmd":"foreignmatter_t","serialnum":"2","position":"201,30"}
+2021:01:28:09:14:56
+4023/192.168.2.107:{"cmd":"foreignmatter_t","serialnum":"2","position":"20,30"}

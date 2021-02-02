@@ -15,4 +15,8 @@ public class LogServiceImpl implements LogService{
     public List<Log> queryAllLog() {
         return Log.queryAllLog();
     }
+
+    public int getSize(){ return Log.getSize();}
+
+    public List<Log> getPage(int start, int end){ return Log.getPage(start, end);}
 }

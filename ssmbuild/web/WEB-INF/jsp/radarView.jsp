@@ -19,8 +19,11 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.staticfile.org/echarts/5.0.1/echarts.min.js"></script>
 
+    <script type="text/javascript" src="../../js/cmdFunction.js"></script>
+    <script type="text/javascript" src="../../js/tools.js"></script>
     <script type="text/javascript" src="../../js/radarViewer.js"></script>
     <script type="text/javascript" src="../../js/webSocketJS.js"></script>
+    <script type="text/javascript" src="../../js/echarts.js"></script>
     <style type="text/css">
         table{
             table-layout: auto;
@@ -89,6 +92,24 @@
         }
     </style>
     <script>
+        function getModelData(){
+            return {
+                "radarid": document.getElementById("radarid").value,
+                "radarip": document.getElementById("radarip").value,
+                "port": document.getElementById("port").value,
+                "sirialnum": document.getElementById("sirialnum").value,
+                "workstate": document.getElementById("workstate").value,
+                "foreignmatter": document.getElementById("foreignmatter").value,
+                "safetydoor": document.getElementById("safetydoor").value,
+                "radarerror": document.getElementById("radarerror").value,
+                "lastlog": document.getElementById("lastlog").value,
+                "comment": document.getElementById("comment").value,
+                "ringPst": document.getElementById("ringPst").value,
+                "warnRng": document.getElementById("warnRng").value,
+                "doorSize": document.getElementById("doorSize").value,
+                "gap": document.getElementById("gap").value
+            }
+        }
         let radar = null;
         $(function () {
             $('#myModal').on('show.bs.modal', function (e) {
@@ -124,18 +145,7 @@
         }
 
         function submit(){
-            const data = {
-                "radarid": document.getElementById("radarid").value,
-                "radarip": document.getElementById("radarip").value,
-                "port": document.getElementById("port").value,
-                "sirialnum": document.getElementById("sirialnum").value,
-                "workstate": document.getElementById("workstate").value,
-                "foreignmatter": document.getElementById("foreignmatter").value,
-                "safetydoor": document.getElementById("safetydoor").value,
-                "radarerror": document.getElementById("radarerror").value,
-                "lastlog": document.getElementById("lastlog").value,
-                "comment": document.getElementById("comment").value,
-            };
+            const data = getModelData()
             let label = document.getElementById(data.radarid+"label")
             label.innerText = data.sirialnum
             console.log(JSON.stringify(data))
@@ -254,19 +264,19 @@
                         </div>
                         <div class="form-group">
                             <label>报警位置</label>
-                            <input type="text" name="ringPst" class="form-control" id="ringPst" readonly>
+                            <input type="text" name="ringPst" class="form-control" id="ringPst">
                         </div>
                         <div class="form-group">
                             <label>报警范围</label>
-                            <input type="text" name="warnRng" class="form-control" id="warnRng" readonly>
+                            <input type="text" name="warnRng" class="form-control" id="warnRng">
                         </div>
                         <div class="form-group">
                             <label>门大小</label>
-                            <input type="text" name="doorSize" class="form-control" id="doorSize" readonly>
+                            <input type="text" name="doorSize" class="form-control" id="doorSize">
                         </div>
                         <div class="form-group">
                             <label>雷达距门距离</label>
-                            <input type="text" name="gap" class="form-control" id="gap" readonly>
+                            <input type="text" name="gap" class="form-control" id="gap">
                         </div>
                         <div class="form-group">
                             <label>最近日志</label>

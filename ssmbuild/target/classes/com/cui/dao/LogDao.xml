@@ -6,8 +6,15 @@
 <mapper namespace="com.cui.dao.LogDao">
 
     <select id="queryAllLog" resultType="Log">
-        select  * from subwaydb.log
+        select  * from subwaydb.radarlog
     </select>
 
+    <select id="getSize" resultType="int">
+        select count(*) from subwaydb.radarlog
+    </select>
+
+    <select id="getPage" resultType="Log">
+        select * from subwaydb.radarlog limit #{param1}, #{param2}
+    </select>
 
 </mapper>

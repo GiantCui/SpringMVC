@@ -1,0 +1,2 @@
+2021:01:28:11:10:30
+4023/192.168.2.107:{"cmd":"INIT_R","RADAR":[{"sirialnum":"11", "workstate":"1", "foreignmatter":"0", "safetydoor":"1", "doorstate":"1","ringPst":"10,10","warnRng":"10","doorSize":"100,100","gap":"100,100"}]}

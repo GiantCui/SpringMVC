@@ -9,5 +9,9 @@ public interface LogService {
      * 查询全部日志
      */
     List<Log> queryAllLog();
+
+    int getSize();
+
+    List<Log> getPage(int start, int end);
 }
 

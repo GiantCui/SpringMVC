@@ -1,0 +1,14 @@
+2021:01:28:09:36:59
+4023/192.168.2.107:{"cmd":"foreignmatter_t","serialnum":"2","position":"10,30"}
+2021:01:28:09:37:09
+4023/192.168.2.107:{"cmd":"foreignmatter_t","serialnum":"3","position":"-10,90"}
+2021:01:28:09:37:18
+4023/192.168.2.107:{"cmd":"foreignmatter_t","serialnum":"4","position":"20,90"}
+2021:01:28:09:37:23
+4023/192.168.2.107:{"cmd":"foreignmatter_t","serialnum":"2","position":"20,30"}
+2021:01:28:09:37:27
+4023/192.168.2.107:{"cmd":"foreignmatter_t","serialnum":"2","position":"30,30"}
+2021:01:28:09:37:29
+4023/192.168.2.107:{"cmd":"foreignmatter_f","serialnum":"2"}
+2021:01:28:09:37:37
+4023/192.168.2.107:{"cmd":"foreignmatter_t","serialnum":"3","position":"30,30"}
